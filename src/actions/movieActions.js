@@ -29,7 +29,7 @@ export function fetchMovieData(name) {
 export function fetchMoviePlot(id) {
 	return async function (dispatch) {
 		const response = await fetch(
-			`http://www.omdbapi.com/?apikey=4f1f7d07&i=${id}&plot=short`
+			`https://www.omdbapi.com/?apikey=4f1f7d07&i=${id}&plot=short`
 		)
 		const responseJson = await response.json()
 
