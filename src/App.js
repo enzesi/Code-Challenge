@@ -12,7 +12,7 @@ function App() {
 			<div className="App">
 				<BrowserRouter>
 					<Switch>
-						<Route exact path={'/'} render={() => <Movie />} />
+						<Route exact path={'/Code-Challenge'} render={() => <Movie />} />
 					</Switch>
 				</BrowserRouter>
 			</div>
