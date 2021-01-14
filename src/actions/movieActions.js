@@ -3,7 +3,12 @@ import { FETCH_MOVIE_DATA, FETCH_MOVIE_PLOT } from './../types'
 export function fetchMovieData(name) {
 	return async function (dispatch) {
 		const response = await fetch(
-			`http://www.omdbapi.com/?apikey=4f1f7d07&s=${name}`
+			`http://www.omdbapi.com/?apikey=4f1f7d07&s=${name}`, {
+				mode: 'cors',
+				headers:{
+				'Access-Control-Allow-Origin':'*'
+				},
+			}
 		)
 		const responseJson = await response.json()
 
