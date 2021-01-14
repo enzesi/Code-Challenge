@@ -4,12 +4,12 @@ export function fetchMovieData(name) {
 	return async function (dispatch) {
 		const response = await fetch(
 			'https://www.omdbapi.com/?apikey=4f1f7d07&s=' + name,
-			{
-				// mode: 'cors',
-				headers: {
-					'Access-Control-Allow-Origin': '*',
-				},
-			}
+			// {
+			// 	// mode: 'cors',
+			// 	headers: {
+			// 		'Access-Control-Allow-Origin': '*',
+			// 	},
+			// }
 		)
 		const responseJson = await response.json()
 
