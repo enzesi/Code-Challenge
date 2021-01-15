@@ -217,6 +217,9 @@ const Movie = () => {
 							<Typography variant="h4" className={classes.result}>
 								Results for: "{inputValue}"
 							</Typography>
+							<Typography variant="h4" className={classes.result}>
+								Total: {searchTotalResults}
+							</Typography>
 							{searchResponse ? (
 								<Grid container spacing={3}>
 									{searchResultsArray.map((movie, i) => (
@@ -270,9 +273,6 @@ const Movie = () => {
 											</Card>
 										</Grid>
 									))}
-									<Grid item xs={12} sm={4}>
-										{searchTotalResults}
-									</Grid>
 								</Grid>
 							) : (
 								<Box>{searchErrorMessage}</Box>
