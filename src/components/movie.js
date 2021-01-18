@@ -50,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
 	paper: {
 		padding: theme.spacing(2),
 	},
+	grid: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
 	search: {
 		width: 353,
 	},
@@ -156,6 +161,77 @@ const Movie = () => {
 									<Grid container spacing={3}>
 										{nominatedMovies.map((movie, i) => (
 											<Grid item xs={12} sm={4} key={i}>
+												<Box className={classes.grid}>
+													<Card className={classes.card}>
+														<CardActionArea>
+															<CardMedia
+																className={classes.media}
+																image={movie.Poster}
+																title="Contemplative Reptile"
+															/>
+															<CardContent>
+																<Typography
+																	gutterBottom
+																	variant="h5"
+																	component="h2"
+																>
+																	{movie.Title}({movie.Year})
+																</Typography>
+																<Typography
+																	variant="body2"
+																	color="textSecondary"
+																	component="p"
+																>
+																	{movie.Plot}
+																</Typography>
+															</CardContent>
+														</CardActionArea>
+														<CardActions>
+															{nominatedMovies &&
+															nominatedMovies.some(
+																(m) => m.imdbID === movie.imdbID
+															) ? (
+																<Button
+																	size="small"
+																	color="primary"
+																	onClick={() => handleInnominate(movie)}
+																>
+																	Innominate
+																</Button>
+															) : (
+																<Button
+																	size="small"
+																	color="primary"
+																	onClick={() => handleNominate(movie)}
+																>
+																	Nominate
+																</Button>
+															)}
+														</CardActions>
+													</Card>
+												</Box>
+											</Grid>
+										))}
+									</Grid>
+								</AccordionDetails>
+							</Accordion>
+						)}
+					</Paper>
+				</Grid>
+				<Grid item xs={12}>
+					{searchResultsArray.length === 0 ? null : (
+						<Paper className={classes.paper}>
+							<Typography variant="h4" className={classes.result}>
+								Results for: "{inputValue}"
+							</Typography>
+							<Typography variant="h4" className={classes.result}>
+								Total: {searchTotalResults}
+							</Typography>
+							{searchResponse ? (
+								<Grid container spacing={3}>
+									{searchResultsArray.map((movie, i) => (
+										<Grid item xs={12} sm={4} key={i}>
+											<Box className={classes.grid}>
 												<Card className={classes.card}>
 													<CardActionArea>
 														<CardMedia
@@ -203,74 +279,7 @@ const Movie = () => {
 														)}
 													</CardActions>
 												</Card>
-											</Grid>
-										))}
-									</Grid>
-								</AccordionDetails>
-							</Accordion>
-						)}
-					</Paper>
-				</Grid>
-				<Grid item xs={12}>
-					{searchResultsArray.length === 0 ? null : (
-						<Paper className={classes.paper}>
-							<Typography variant="h4" className={classes.result}>
-								Results for: "{inputValue}"
-							</Typography>
-							<Typography variant="h4" className={classes.result}>
-								Total: {searchTotalResults}
-							</Typography>
-							{searchResponse ? (
-								<Grid container spacing={3}>
-									{searchResultsArray.map((movie, i) => (
-										<Grid item xs={12} sm={4} key={i}>
-											<Card className={classes.card}>
-												<CardActionArea>
-													<CardMedia
-														className={classes.media}
-														image={movie.Poster}
-														title="Contemplative Reptile"
-													/>
-													<CardContent>
-														<Typography
-															gutterBottom
-															variant="h5"
-															component="h2"
-														>
-															{movie.Title}({movie.Year})
-														</Typography>
-														<Typography
-															variant="body2"
-															color="textSecondary"
-															component="p"
-														>
-															{movie.Plot}
-														</Typography>
-													</CardContent>
-												</CardActionArea>
-												<CardActions>
-													{nominatedMovies &&
-													nominatedMovies.some(
-														(m) => m.imdbID === movie.imdbID
-													) ? (
-														<Button
-															size="small"
-															color="primary"
-															onClick={() => handleInnominate(movie)}
-														>
-															Innominate
-														</Button>
-													) : (
-														<Button
-															size="small"
-															color="primary"
-															onClick={() => handleNominate(movie)}
-														>
-															Nominate
-														</Button>
-													)}
-												</CardActions>
-											</Card>
+											</Box>
 										</Grid>
 									))}
 								</Grid>
